@@ -17,16 +17,12 @@ export default {
       },
     },
     {
-      title: 'Season',
-      name: 'season',
-      type: 'number',
-      description: 'Which season was this Frank moment in?',
-    },
-    {
       title: 'Episode',
       name: 'episode',
-      type: 'number',
-      description: 'Which episode of the season was this Frank moment in?',
+      type: 'reference',
+      to: {
+        type: 'episode',
+      },
     },
     {
       title: 'Quote',
