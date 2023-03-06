@@ -5,7 +5,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className='m-10'>
       <div className='flex flex-col items-center justify-center bg-white rounded-2xl cursor-pointer'>
-        <div>
+        <div className='flex-1'>
           <Image src={frank} className='h-full object-cover' />
         </div>
       </div>

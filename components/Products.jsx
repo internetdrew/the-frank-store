@@ -5,7 +5,7 @@ const Products = ({ products }) => {
   return (
     <>
       <section className='mx-8 mt-10'>
-        <div className='grid grid-cols-3 w-full p-8'>
+        <div className='grid grid-cols-1 md:grid-cols-3 w-full md:p-8'>
           {products.map((prod, i) => (
             <ProductCard key={prod._id} product={prod} />
           ))}

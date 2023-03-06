@@ -10,9 +10,9 @@ const Banner = () => {
           <h2 className='uppercase text-sm sm:text-xl mb-2'>
             This months featured frank
           </h2>
-          <p className='normal-case text-3xl sm:text-5xl'>
+          <blockquote className='normal-case text-3xl sm:text-5xl'>
             Grab up to 60% off on selected products
-          </p>
+          </blockquote>
         </div>
         <div className='flex items-center justify-center sm:justify-start'>
           <button className='px-6 py-2 bg-slate-900 rounded-full font-semibold text-lg'>
