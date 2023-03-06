@@ -33,6 +33,11 @@ export default {
       description: "What's the famous line Frank uses in this scene?",
     },
     {
+      title: 'Description',
+      name: 'description',
+      type: 'string',
+    },
+    {
       title: 'Rage Level',
       name: 'rage',
       type: 'number',
