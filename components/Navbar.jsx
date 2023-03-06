@@ -5,7 +5,9 @@ const Navbar = () => {
   return (
     <nav className='fixed top-0 w-full flex items-center justify-between p-2 sm:px-6 text-md sm:text-xl z-10 bg-slate-50'>
       <div className='p-5'>
-        <Link href='/'>Quite Frank-ly</Link>
+        <Link href='/' className='text-2xl font-bold'>
+          Quite Frank-ly
+        </Link>
       </div>
       <div className='flex items-center p-5'>
         <div className='hidden sm:inline-flex border-r-2 pr-4 border-gray-300'>
