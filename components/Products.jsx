@@ -1,6 +1,6 @@
 import ProductCard from './ProductCard';
 
-const ProductCards = () => {
+const Products = () => {
   return (
     <div>
       <h1>Products</h1>
@@ -8,4 +8,4 @@ const ProductCards = () => {
   );
 };
 
-export default ProductCards;
+export default Products;
