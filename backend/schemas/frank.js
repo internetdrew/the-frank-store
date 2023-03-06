@@ -17,12 +17,14 @@ export default {
       },
     },
     {
+      title: 'Season',
+      name: 'season',
+      type: 'number',
+    },
+    {
       title: 'Episode',
       name: 'episode',
-      type: 'reference',
-      to: {
-        type: 'episode',
-      },
+      type: 'number',
     },
     {
       title: 'Quote',

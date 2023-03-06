@@ -4,7 +4,7 @@ import frank from '/public/frank-banner.png';
 
 const Banner = () => {
   return (
-    <section className='grid sm:grid-cols-2 mx-4 sm:mx-8 mt-32 p-2 sm:p-8 bg-slate-500 rounded-2xl relative'>
+    <section className='grid sm:grid-cols-2 mx-4 sm:mx-8 mt-32 p-2 sm:p-8 bg-gradient-to-b from-yellow-300 via-red-400 to-red-600 rounded-2xl relative'>
       <div className='sm:ml-20 mb-64 sm:mb-0 sm:mt-8 p-5 space-y-2 text-white'>
         <div className='max-w-md mb-4 text-center sm:text-left'>
           <h2 className='uppercase text-sm sm:text-xl mb-2'>
