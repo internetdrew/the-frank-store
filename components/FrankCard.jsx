@@ -1,5 +1,4 @@
 import Image from 'next/image';
-
 import { urlFor } from '@/lib/sanityClient';
 
 const FrankCard = ({ frank }) => {
