@@ -1,21 +1,13 @@
 import banner from '@/backend/schemas/banner';
-import { Navbar, Banner, Franks, Footer } from '@/components';
+import { Navbar, Banner, Franks, Footer, Layout } from '@/components';
 import { client } from '@/lib/sanityClient';
 
 const Home = ({ franks, bannerInfo, bannerFrankInfo }) => {
   return (
-    <main>
-      <header>
-        <Navbar />
-        <Banner bannerInfo={bannerInfo} bannerFrankInfo={bannerFrankInfo} />
-      </header>
-      <main>
-        <Franks franks={franks} />
-      </main>
-      <footer>
-        <Footer />
-      </footer>
-    </main>
+    <>
+      <Banner bannerInfo={bannerInfo} bannerFrankInfo={bannerFrankInfo} />
+      <Franks franks={franks} />
+    </>
   );
 };
 
