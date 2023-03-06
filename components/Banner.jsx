@@ -7,7 +7,7 @@ const Banner = () => {
     <section className='grid sm:grid-cols-2 mx-4 sm:mx-8 mt-32 p-2 sm:p-8 bg-slate-500 rounded-2xl relative'>
       <div className='sm:ml-20 mb-64 sm:mb-0 sm:mt-8 p-5 space-y-2 text-white'>
         <div className='max-w-md mb-4 text-center sm:text-left'>
-          <h2 className='uppercase text-sm sm:text-2xl mb-2'>
+          <h2 className='uppercase text-sm sm:text-xl mb-2'>
             Small text goes here
           </h2>
           <p className='normal-case text-3xl sm:text-5xl'>
