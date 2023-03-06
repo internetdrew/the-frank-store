@@ -1,5 +1,9 @@
 const Footer = () => {
-  return <div>Footer</div>;
+  return (
+    <div className='mt-20 bg-red-500 text-center'>
+      <p>An Internet Drew Creation</p>
+    </div>
+  );
 };
 
 export default Footer;

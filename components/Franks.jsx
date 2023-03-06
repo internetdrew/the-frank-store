@@ -1,10 +1,10 @@
 import FrankCard from './FrankCard';
 
-const Products = ({ franks }) => {
+const Franks = ({ franks }) => {
   return (
     <>
-      <section className='mx-8 mt-10'>
-        <div className='grid grid-cols-1 md:grid-cols-3 w-full md:p-8'>
+      <section className='p-4 sm:p-28 mt-20'>
+        <div className='grid grid-cols-1 gap-16 gap-y-36 md:grid-cols-3 w-full'>
           {franks.map(frank => (
             <FrankCard key={frank._id} frank={frank} />
           ))}
@@ -14,4 +14,4 @@ const Products = ({ franks }) => {
   );
 };
 
-export default Products;
+export default Franks;
