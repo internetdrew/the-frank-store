@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { urlFor } from '@/lib/sanityClient';
-import frank from '/public/frank-banner.png';
 
 const Banner = ({ bannerInfo, bannerFrankInfo }) => {
   console.log(bannerInfo);
