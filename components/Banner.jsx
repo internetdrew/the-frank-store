@@ -8,7 +8,7 @@ const Banner = () => {
       <div className='sm:ml-20 mb-64 sm:mb-0 sm:mt-8 p-5 space-y-2 text-white'>
         <div className='max-w-md mb-4 text-center sm:text-left'>
           <h2 className='uppercase text-sm sm:text-xl mb-2'>
-            Small text goes here
+            This months featured frank
           </h2>
           <p className='normal-case text-3xl sm:text-5xl'>
             Grab up to 60% off on selected products

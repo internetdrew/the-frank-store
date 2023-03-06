@@ -7,7 +7,7 @@ const Products = () => {
       <section className='mx-8 mt-10'>
         <div className='grid grid-cols-3 w-full p-8'>
           {products.map(prod => (
-            <ProductCard />
+            <ProductCard key={prod} />
           ))}
         </div>
       </section>
