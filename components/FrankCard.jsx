@@ -3,8 +3,8 @@ import { urlFor } from '@/lib/sanityClient';
 
 const FrankCard = ({ frank }) => {
   return (
-    <div>
-      <div className='flex flex-col items-center justify-center bg-white rounded-3xl cursor-pointer overflow-hidden w-full h-full'>
+    <div className='hover:scale-105 transition-all duration-300 bg-none ease-out'>
+      <div className='flex flex-col items-center justify-center rounded-3xl overflow-hidden cursor-pointer  w-full h-full'>
         <div className='flex-1'>
           <Image
             src={urlFor(frank.image).url()}
@@ -18,7 +18,7 @@ const FrankCard = ({ frank }) => {
       </div>
       <div className='w-full flex-1'>
         <h3 className='text-xl mt-2 -mb-2 font-extrabold'>
-          "{frank.title}" Frank
+          {frank.title} Frank
         </h3>
         <small>
           Season {frank.season}, Episode {frank.episode}
