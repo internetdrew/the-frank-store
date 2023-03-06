@@ -1,5 +1,5 @@
 import banner from '@/backend/schemas/banner';
-import { Navbar, Banner, Products, Footer } from '@/components';
+import { Navbar, Banner, Franks, Footer } from '@/components';
 import { client } from '@/lib/sanityClient';
 
 const Home = ({ franks, bannerInfo }) => {
@@ -11,7 +11,7 @@ const Home = ({ franks, bannerInfo }) => {
         <Banner bannerInfo={bannerInfo} />
       </header>
       <main>
-        <Products products={franks} />
+        <Franks franks={franks} />
       </main>
       <footer>
         <Footer />
