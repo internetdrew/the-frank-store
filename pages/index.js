@@ -3,10 +3,16 @@ import { Navbar, Banner, ProductCards, Footer } from '@/components';
 const Home = () => {
   return (
     <main>
-      <Navbar />
-      <Banner />
-      <ProductCards />
-      <Footer />
+      <header>
+        <Navbar />
+        <Banner />
+      </header>
+      <main>
+        <ProductCards />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
     </main>
   );
 };
