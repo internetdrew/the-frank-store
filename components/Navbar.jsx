@@ -9,7 +9,7 @@ const Navbar = () => {
           href='/'
           className='text-xl sm:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-600'
         >
-          The Frank Collection
+          The Frank Store
         </Link>
       </div>
       <div className='flex items-center p-5 text-lg ml-auto'>

@@ -5,7 +5,7 @@ const Layout = ({ children }) => {
   return (
     <div>
       <Head>
-        <title>The Frank Collection</title>
+        <title>The Frank Store</title>
       </Head>
       <header>
         <Navbar />
