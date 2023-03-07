@@ -1,29 +1,31 @@
 import { useState, useEffect } from 'react';
 import { AiFillFire, AiOutlineFire } from 'react-icons/ai';
 
-const RageMeter = ({ rageLevel }) => {
+const RageMeter = ({ franksRageLevel }) => {
   const [rageArray, setRageArray] = useState([]);
 
-  const calculateRage = (rageLevel, max = 5) => {
-    if (rageLevel === max) {
-      return setRageArray(new Array(max).fill(true));
+  const calculateRage = (franksRageLevel, franksMaxRage = 5) => {
+    if (franksRageLevel === franksMaxRage) {
+      return setRageArray(new Array(franksMaxRage).fill(true));
     }
 
-    if (rageLevel < max) {
-      const difference = max - rageLevel;
-      const yesRage = new Array(rageLevel).fill(true);
+    if (franksRageLevel < franksMaxRage) {
+      const difference = franksMaxRage - franksRageLevel;
+      const yesRage = new Array(franksRageLevel).fill(true);
       const noRage = new Array(difference).fill(false);
       return setRageArray([...yesRage, ...noRage]);
     }
   };
 
   useEffect(() => {
-    calculateRage(rageLevel);
+    calculateRage(franksRageLevel);
   }, []);
 
   return (
-    <div className='flex items-center'>
-      <span className='mr-1'>Rage Level:</span>
+    <div className='flex items-center text-red-500'>
+      <span className='mr-1 text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-600'>
+        Rage Level:
+      </span>
       {rageArray.map((value, i) =>
         value ? <AiFillFire key={i} /> : <AiOutlineFire key={i} />
       )}
