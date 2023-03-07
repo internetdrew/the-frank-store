@@ -9,7 +9,7 @@ const Banner = ({ bannerInfo, bannerFrankInfo: { relatedFrank } }) => {
         <div className='max-w-xl font-bold mb-4 text-center sm:text-left'>
           <p className='uppercase text-lg'>Frank of the month</p>
           <h2 className='uppercase text-sm sm:text-2xl mb-2'>
-            <span className='font-bold'>{relatedFrank?.title}</span> Frank
+            <strong>{relatedFrank?.title}</strong> Frank
           </h2>
           <blockquote className='normal-case text-3xl sm:text-5xl'>
             "{relatedFrank?.quote}"

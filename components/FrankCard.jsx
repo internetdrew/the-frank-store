@@ -20,8 +20,8 @@ const FrankCard = ({ frank }) => {
         </div>
       </Link>
       <div className='w-full flex-1'>
-        <h3 className='text-xl mt-2 -mb-2 font-extrabold'>
-          {frank.title} Frank
+        <h3 className='text-xl mt-2 -mb-2 font-semibold'>
+          <strong>{frank.title}</strong> Frank
         </h3>
         <small>
           Season {frank.season}, Episode {frank.episode}
