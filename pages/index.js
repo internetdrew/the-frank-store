@@ -1,5 +1,4 @@
-import banner from '@/backend/schemas/banner';
-import { Navbar, Banner, Franks, Footer, Layout } from '@/components';
+import { Banner, Franks } from '@/components';
 import { client } from '@/lib/sanityClient';
 
 const Home = ({ franks, bannerInfo, bannerFrankInfo }) => {

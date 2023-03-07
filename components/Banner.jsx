@@ -17,7 +17,9 @@ const Banner = ({ bannerInfo, bannerFrankInfo: { relatedFrank } }) => {
         </div>
         <div className='flex items-center justify-center sm:justify-start'>
           <button className='px-6 py-2 bg-slate-900 rounded-full font-semibold text-lg'>
-            <Link href={`${relatedFrank?.slug?.current}`}>Shop Now</Link>
+            <Link href={`/franks/${relatedFrank?.slug?.current}`}>
+              Shop Now
+            </Link>
           </button>
         </div>
       </div>
