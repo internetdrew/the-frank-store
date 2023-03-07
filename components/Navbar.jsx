@@ -17,7 +17,9 @@ const Navbar = () => {
           <FiSearch className='cursor-pointer' />
         </div>
         <div className='pl-4 w-24'>
-          <p className='cursor-pointer font-semibold'>Cart (0)</p>
+          <button className='cursor-pointer font-semibold'>
+            <Link href={'/cart'}>Cart (0)</Link>
+          </button>
         </div>
       </div>
     </nav>

@@ -5,7 +5,7 @@ import { urlFor } from '@/lib/sanityClient';
 const Banner = ({ bannerInfo, bannerFrankInfo: { relatedFrank } }) => {
   return (
     <section className='grid sm:grid-cols-2 mx-4 sm:mx-8 mt-32 p-2 sm:p-8 bg-gradient-to-b from-yellow-300 via-red-400 to-red-600 rounded-2xl relative'>
-      <div className='sm:ml-20 mb-64 sm:mb-0 sm:mt-8 p-5 space-y-2 text-white'>
+      <div className='sm:ml-20 mb-80 sm:mb-0 sm:mt-8 p-5 space-y-2 text-white'>
         <div className='max-w-xl font-bold mb-4 text-center sm:text-left'>
           <p className='uppercase text-lg'>Frank of the month</p>
           <h2 className='uppercase text-sm sm:text-2xl mb-2'>
