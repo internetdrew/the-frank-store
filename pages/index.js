@@ -12,7 +12,7 @@ const Home = ({ franks, bannerInfo, bannerFrankInfo }) => {
 
 export default Home;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const query = '*[_type == "frank"]';
   const franks = await client.fetch(query);
 
