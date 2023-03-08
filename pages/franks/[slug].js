@@ -37,8 +37,8 @@ const FrankDetails = ({ frank }) => {
     frank;
 
   return (
-    <section className='p-4 lg:p-32 mt-32 lg:mt-10'>
-      <div className='grid sm:grid-cols-2 gap-14 p-4'>
+    <section className='p-4 md:p-32 mt-32 lg:mt-10'>
+      <div className='grid lg:grid-cols-2 gap-14 p-4'>
         <Image
           src={urlFor(image).url()}
           alt={`image for ${title} frank`}
@@ -62,9 +62,9 @@ const FrankDetails = ({ frank }) => {
           <h2 className='text-2xl font-bold text-orange-600 mt-4'>${price}</h2>
 
           {/* Quantity */}
-          <div className='flex items-center justify-between mt-auto'>
-            <h2 className='text-2xl font-semibold'>Quantity:</h2>
-            <div className='flex items-center ml-10 justify-between gap-6 text-xl border py-2 px-8 rounded-full font-bold'>
+          <div className='flex items-center justify-between mt-10'>
+            <h2 className='text-2xl font-semibold'>Qty:</h2>
+            <div className='flex items-center justify-between text-xl border py-2 px-8 rounded-full font-bold'>
               <button
                 className='text-red-500 border-r pr-4'
                 onClick={() =>
