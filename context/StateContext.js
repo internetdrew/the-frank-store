@@ -9,6 +9,10 @@ export const StateContext = ({ children }) => {
   const [totalQty, setTotalQty] = useState(0);
   const [qty, setQty] = useState(1);
 
+  const addToCart = (frank, quantity) => {
+    const frankAlreadyInCart = cartItems?.some(item => item?._id === frank._id);
+  };
+
   const increaseQty = () => {
     setQty(prevQty => prevQty + 1);
   };

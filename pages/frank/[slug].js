@@ -35,7 +35,7 @@ const FrankDetails = ({ frank }) => {
   const { description, season, episode, image, quote, price, rage, title } =
     frank;
   const { increaseQty, decreaseQty, qty } = useStateContext();
-  console.dir(useStateContext());
+  console.log(frank);
 
   return (
     <section className='p-4 md:p-32 mt-32 lg:mt-10'>
