@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { client, urlFor } from '@/lib/sanityClient';
 import Image from 'next/image';
 import { RageMeter } from '@/components';
@@ -34,8 +33,8 @@ export const getStaticProps = async ({ params: { slug } }) => {
 const FrankDetails = ({ frank }) => {
   const { description, season, episode, image, quote, price, rage, title } =
     frank;
-  const { increaseQty, decreaseQty, qty } = useStateContext();
-  console.log(frank);
+  const { increaseQty, decreaseQty, currentFrankQty, addToCart } =
+    useStateContext();
 
   return (
     <section className='p-4 md:p-32 mt-32 lg:mt-10'>
@@ -73,7 +72,7 @@ const FrankDetails = ({ frank }) => {
               >
                 <AiOutlineMinus />
               </button>
-              <p className='w-8 text-center'>{qty}</p>
+              <p className='w-8 text-center'>{currentFrankQty}</p>
               <button
                 className='text-green-700 border-l pl-4'
                 onClick={increaseQty}
@@ -83,7 +82,10 @@ const FrankDetails = ({ frank }) => {
             </div>
           </div>
 
-          <button className='w-full flex-2 bg-gradient-to-r from-yellow-500 to-red-600 py-4 rounded-full text-white font-semibold mt-10 text-xl shadow-lg'>
+          <button
+            className='w-full flex-2 bg-gradient-to-r from-yellow-500 to-red-600 py-4 rounded-full text-white font-semibold mt-10 text-xl shadow-lg'
+            onClick={() => addToCart(frank, currentFrankQty)}
+          >
             Add to Cart
           </button>
         </div>
