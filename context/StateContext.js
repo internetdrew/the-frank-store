@@ -3,7 +3,7 @@ import { toast } from 'react-hot-toast';
 
 const Context = createContext();
 
-export const stateContext = ({ children }) => {
+export const StateContext = ({ children }) => {
   const [cartItems, setCartItems] = useState();
   const [totalPrice, setTotalPrice] = useState();
   const [totalQty, setTotalQty] = useState(0);

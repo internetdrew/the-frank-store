@@ -43,7 +43,7 @@ const FrankDetails = ({ frank }) => {
           <Image
             src={urlFor(image).url()}
             alt={`image for ${title} frank`}
-            className='object-cover h-full rounded-3xl overflow-hidden w-full shadow-2xl scale-105'
+            className='object-cover h-full rounded-3xl overflow-hidden w-full shadow-2xl'
             width={300}
             height={300}
             priority
@@ -63,7 +63,7 @@ const FrankDetails = ({ frank }) => {
           <h2 className='text-2xl font-bold text-orange-600 mt-4'>${price}</h2>
 
           {/* Quantity */}
-          <div className='flex items-center justify-between mt-auto'>
+          <div className='flex items-center justify-between mt-10 lg:mt-auto'>
             <h2 className='text-2xl font-semibold'>Qty:</h2>
             <div className='flex items-center justify-between text-xl border py-2 px-8 rounded-full font-bold'>
               <button
@@ -87,7 +87,7 @@ const FrankDetails = ({ frank }) => {
             </div>
           </div>
 
-          <button className='w-full flex-2 bg-gradient-to-r from-yellow-500 to-red-600 py-4 rounded-full text-white font-semibold mt-10 text-xl'>
+          <button className='w-full flex-2 bg-gradient-to-r from-yellow-500 to-red-600 py-4 rounded-full text-white font-semibold mt-10 text-xl shadow-lg'>
             Add to Cart
           </button>
         </div>
