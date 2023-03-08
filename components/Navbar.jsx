@@ -1,7 +1,10 @@
 import Link from 'next/link';
+import { useStateContext } from '@/context/StateContext';
 import { FiSearch } from 'react-icons/fi';
 
 const Navbar = () => {
+  const { totalQty } = useStateContext();
+
   return (
     <nav className='fixed top-0 w-full flex items-center p-2 sm:px-6 z-10 bg-gradient-to-b from-stone-100 via-stone-50'>
       <div className='p-5'>
@@ -18,7 +21,7 @@ const Navbar = () => {
         </div>
         <div className='pl-4 w-24'>
           <button className='cursor-pointer font-semibold'>
-            <Link href={'/cart'}>Cart (0)</Link>
+            <Link href={'/cart'}>Cart ({totalQty})</Link>
           </button>
         </div>
       </div>

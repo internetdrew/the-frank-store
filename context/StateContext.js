@@ -9,9 +9,6 @@ export const StateContext = ({ children }) => {
   const [totalQty, setTotalQty] = useState(0);
   const [currentFrankQty, setCurrentFrankQty] = useState(1);
 
-  console.log(cartItems);
-  console.log(totalPrice);
-
   const addToCart = (frank, qty) => {
     const frankAlreadyInCart = cartItems?.some(item => item?._id === frank._id);
 
