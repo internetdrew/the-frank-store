@@ -2,7 +2,7 @@ import { useStateContext } from '@/context/StateContext';
 import CartItem from '@/components/CartItem';
 
 const Cart = () => {
-  const { cartItems, totalPrice } = useStateContext();
+  const { cartItems } = useStateContext();
   const cartLabels = ['', 'product', 'price', 'quantity', 'total'];
   return (
     <div className='mt-32 mx-20'>
@@ -13,13 +13,17 @@ const Cart = () => {
         <div className='col-span-2'>
           <div>
             <div className='grid grid-cols-6 border-b-2'>
-              {cartLabels.map(section => {
+              {cartLabels.map((section, i) => {
                 const str =
                   section === 'product'
                     ? 'capitalize font-semibold text-lg col-span-2'
                     : 'capitalize font-semibold text-lg';
 
-                return <div className={str}>{section}</div>;
+                return (
+                  <div key={i} className={str}>
+                    {section}
+                  </div>
+                );
               })}
             </div>
             <div>
