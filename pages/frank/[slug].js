@@ -3,6 +3,7 @@ import { client, urlFor } from '@/lib/sanityClient';
 import Image from 'next/image';
 import { RageMeter } from '@/components';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import { useStateContext } from '@/context/StateContext';
 
 export const getStaticPaths = async () => {
   const query = `*[_type == "frank"]`;
@@ -31,10 +32,10 @@ export const getStaticProps = async ({ params: { slug } }) => {
 };
 
 const FrankDetails = ({ frank }) => {
-  const [quantity, setQuantity] = useState(1);
-
   const { description, season, episode, image, quote, price, rage, title } =
     frank;
+  const { increaseQty, decreaseQty, qty } = useStateContext();
+  console.dir(useStateContext());
 
   return (
     <section className='p-4 md:p-32 mt-32 lg:mt-10'>
@@ -68,19 +69,14 @@ const FrankDetails = ({ frank }) => {
             <div className='flex items-center justify-between text-xl border py-2 px-8 rounded-full font-bold'>
               <button
                 className='text-red-500 border-r pr-4'
-                onClick={() =>
-                  setQuantity(prevQty => {
-                    if (prevQty - 1 < 1) return 1;
-                    return prevQty - 1;
-                  })
-                }
+                onClick={decreaseQty}
               >
                 <AiOutlineMinus />
               </button>
-              <p className='w-8 text-center'>{quantity}</p>
+              <p className='w-8 text-center'>{qty}</p>
               <button
                 className='text-green-700 border-l pl-4'
-                onClick={() => setQuantity(prevQty => prevQty + 1)}
+                onClick={increaseQty}
               >
                 <AiOutlinePlus />
               </button>
