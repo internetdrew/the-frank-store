@@ -39,14 +39,16 @@ const FrankDetails = ({ frank }) => {
   return (
     <section className='p-4 md:p-32 mt-32 lg:mt-10'>
       <div className='grid lg:grid-cols-2 gap-14 p-4'>
-        <Image
-          src={urlFor(image).url()}
-          alt={`image for ${title} frank`}
-          className='object-cover h-full rounded-3xl overflow-hidden w-full shadow-2xl'
-          width={300}
-          height={300}
-          priority
-        />
+        <div className='h-full'>
+          <Image
+            src={urlFor(image).url()}
+            alt={`image for ${title} frank`}
+            className='object-cover h-full rounded-3xl overflow-hidden w-full shadow-2xl scale-105'
+            width={300}
+            height={300}
+            priority
+          />
+        </div>
         <div className='flex flex-col'>
           <h1 className='text-5xl'>
             <strong>{title}</strong> Frank
@@ -57,12 +59,11 @@ const FrankDetails = ({ frank }) => {
           <div className='flex items-center text-xl mt-1'>
             <RageMeter franksRageLevel={rage} />
           </div>
-          <h2 className='mt-8 text-3xl font-semibold'>Details</h2>
-          <p className='text-2xl'>{description}</p>
+          <p className='text-2xl mt-8'>{description}</p>
           <h2 className='text-2xl font-bold text-orange-600 mt-4'>${price}</h2>
 
           {/* Quantity */}
-          <div className='flex items-center justify-between mt-10'>
+          <div className='flex items-center justify-between mt-auto'>
             <h2 className='text-2xl font-semibold'>Qty:</h2>
             <div className='flex items-center justify-between text-xl border py-2 px-8 rounded-full font-bold'>
               <button
