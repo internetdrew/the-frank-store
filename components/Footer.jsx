@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className='mt-20 bg-red-500 w-full text-center'>
+    <div className='bg-red-500 w-full text-center mt-auto'>
       <p>An Internet Drew Creation</p>
     </div>
   );

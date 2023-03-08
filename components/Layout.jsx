@@ -3,14 +3,14 @@ import { Navbar, Footer } from '@/components';
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <div className='min-h-screen flex flex-col'>
       <Head>
         <title>The Frank Store</title>
       </Head>
       <header>
         <Navbar />
       </header>
-      <main>{children}</main>
+      <main className='flex-1'>{children}</main>
       <footer>
         <Footer />
       </footer>
