@@ -1,3 +1,4 @@
+import frank from '@/backend/schemas/frank';
 import { createContext, useContext, useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 
@@ -59,23 +60,32 @@ export const StateContext = ({ children }) => {
   };
 
   const changeCartItemQty = (itemId, operation) => {
-    const frankInCart = cartItems?.find(cartItem => cartItem?._id === itemId);
+    const frankToUpdate = cartItems?.find(cartItem => cartItem?._id === itemId);
     const otherItemsInCart = cartItems?.filter(
       cartItem => cartItem?._id !== itemId
     );
 
     if (operation === 'increase') {
-      frankInCart.qty += 1;
-      setTotalPrice(prevTotal => prevTotal + frankInCart.price);
+      // frankToUpdate.qty += 1; // Should document this
+      const updatedCart = cartItems?.map(item => {
+        if (frankToUpdate) {
+          return { ...frankToUpdate, qty: frankToUpdate.qty + 1 };
+        }
+      });
+      setCartItems(updatedCart);
+      setTotalPrice(prevTotal => prevTotal + frankToUpdate.price);
       setTotalQty(prevQty => prevQty + 1);
     }
 
     if (operation === 'decrease') {
-      if (frankInCart.qty > 1) {
-        frankInCart.qty -= 1;
-        setTotalQty(prevQty => prevQty - 1);
-        setTotalPrice(prevTotal => prevTotal - frankInCart.price);
-      }
+      const updatedCart = cartItems?.map(item => {
+        if (frankToUpdate && frankToUpdate.qty > 1) {
+          return { ...frankToUpdate, qty: frankToUpdate.qty - 1 };
+        }
+      });
+      setCartItems(updatedCart);
+      setTotalPrice(prevTotal => prevTotal - frankToUpdate.price);
+      setTotalQty(prevQty => prevQty - 1);
     }
   };
 
