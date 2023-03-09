@@ -13,7 +13,7 @@ export const StateContext = ({ children }) => {
   const [activeCoupon, setActiveCoupon] = useState(false);
 
   useEffect(() => {
-    setCheckoutDiscount(totalPrice / 2);
+    if (activeCoupon) setCheckoutDiscount(totalPrice / 2);
   }, [totalPrice]);
 
   const addToCart = (frank, qty) => {
@@ -96,6 +96,7 @@ export const StateContext = ({ children }) => {
         currentFrankQty,
         couponCode,
         checkoutDiscount,
+        activeCoupon,
         increaseQty,
         decreaseQty,
         addToCart,

@@ -1,9 +1,8 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { useStateContext } from '@/context/StateContext';
 import CartItem from '@/components/CartItem';
 
 const Cart = () => {
-  const [activeCoupon, setActiveCoupon] = useState(false);
   const {
     cartItems,
     totalPrice,
@@ -11,14 +10,13 @@ const Cart = () => {
     setCouponCode,
     couponCode,
     checkoutDiscount,
+    activeCoupon,
   } = useStateContext();
 
   const inputRef = useRef(null);
 
-  console.log(checkoutDiscount);
+  const cartLabels = ['', 'product', 'price', 'qty', 'total'];
 
-  const cartLabels = ['', 'product', 'price', 'quantity', 'total'];
-  // const discount = activeCoupon ? (totalPrice / 2).toFixed(2) : 0;
   const deliveryFee = cartItems.length === 0 ? 0 : 9.99;
   const finalTotal = totalPrice + deliveryFee - checkoutDiscount;
 
@@ -27,7 +25,7 @@ const Cart = () => {
       <h1 className='text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-600'>
         Your Shopping Cart
       </h1>
-      <div className='grid md:grid-cols-3 gap-20 mt-16 '>
+      <div className='grid md:grid-cols-3 gap-20 mt-16'>
         <div className='col-span-2'>
           <div>
             <div className='grid grid-cols-6 border-b-2'>
@@ -44,49 +42,62 @@ const Cart = () => {
                 );
               })}
             </div>
-            <div>
-              {cartItems.map(item => (
-                <CartItem key={item?._id} item={item} />
-              ))}
+            <div className='lg:h-96 overflow-y-scroll'>
+              <div>
+                {cartItems.map(item => (
+                  <CartItem key={item?._id} item={item} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
         <div className='border-2 rounded-xl p-4'>
-          <h2 className='font-semibold text-lg'>Order Summary</h2>
-          <div className='flex items-center justify-between gap-6 mb-10 mt-2'>
-            <input
-              type='text'
-              ref={inputRef}
-              value={couponCode}
-              placeholder='Discount code'
-              className='rounded-full pl-4 pr-2 py-2 border-2 w-full outline-none'
-              onChange={e => setCouponCode(e.target.value)}
-            />
-            <button
-              type='button'
-              className='py-2 px-4 bg-orange-500 rounded-full font-semibold text-white'
-              onClick={handleDiscount}
-            >
-              Apply
-            </button>
-          </div>
+          <h2 className='font-semibold text-lg mb-2'>Order Summary</h2>
+          {activeCoupon ? (
+            <p className='text-center text-gray-500 py-5'>
+              Discount active for 50% off
+            </p>
+          ) : (
+            <div className='flex items-center justify-between gap-6 mb-10 mt-2'>
+              <input
+                type='text'
+                ref={inputRef}
+                value={couponCode}
+                placeholder='Try discount code "festivus"'
+                className='rounded-full pl-4 pr-2 py-2 border-2 w-full outline-none'
+                onChange={e => setCouponCode(e.target.value)}
+              />
+              <button
+                type='button'
+                className='py-2 px-4 bg-orange-500 rounded-full font-semibold text-white'
+                onClick={handleDiscount}
+              >
+                Apply
+              </button>
+            </div>
+          )}
           <div className='flex items-center justify-between font-semibold'>
             <p>Subtotal</p>
             <p>${totalPrice.toFixed(2)}</p>
           </div>
-          <div className='flex items-center justify-between font-semibold'>
-            <p>Discount</p>
-            <p>-${checkoutDiscount.toFixed(2)}</p>
-          </div>
-          <div className='flex items-center justify-between font-semibold border-b-2 pb-2'>
+          {activeCoupon ? (
+            <div className='flex items-center justify-between font-semibold'>
+              <p>Discount</p>
+              <p>-${checkoutDiscount.toFixed(2)}</p>
+            </div>
+          ) : null}
+          <div className='flex items-center justify-between font-semibold border-b-2 pb-1'>
             <p>Newman Delivery Fee</p>
             <p>${deliveryFee}</p>
           </div>
-          <div className='flex items-center justify-between font-semibold'>
+          <div className='flex items-center justify-between font-semibold mt-2'>
             <p>Total</p>
             <p>${finalTotal.toFixed(2)}</p>
           </div>
+          <button className='bg-orange-500 w-full py-2 rounded-full mt-6 text-white font-semibold text-lg'>
+            Checkout
+          </button>
         </div>
       </div>
     </div>
