@@ -15,6 +15,8 @@ const Cart = () => {
 
   const inputRef = useRef(null);
 
+  console.log(checkoutDiscount);
+
   const cartLabels = ['', 'product', 'price', 'quantity', 'total'];
   // const discount = activeCoupon ? (totalPrice / 2).toFixed(2) : 0;
   const deliveryFee = cartItems.length === 0 ? 0 : 9.99;

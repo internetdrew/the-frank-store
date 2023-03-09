@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { toast } from 'react-hot-toast';
 
 const Context = createContext();
@@ -11,6 +11,10 @@ export const StateContext = ({ children }) => {
   const [couponCode, setCouponCode] = useState('');
   const [checkoutDiscount, setCheckoutDiscount] = useState(0);
   const [activeCoupon, setActiveCoupon] = useState(false);
+
+  useEffect(() => {
+    setCheckoutDiscount(totalPrice / 2);
+  }, [totalPrice]);
 
   const addToCart = (frank, qty) => {
     const frankAlreadyInCart = cartItems?.some(item => item?._id === frank._id);
