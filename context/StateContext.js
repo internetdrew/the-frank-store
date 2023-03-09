@@ -68,9 +68,10 @@ export const StateContext = ({ children }) => {
     if (operation === 'increase') {
       // frankToUpdate.qty += 1; // Should document this
       const updatedCart = cartItems?.map(item => {
-        if (frankToUpdate) {
+        if (item._id === frankToUpdate._id) {
           return { ...frankToUpdate, qty: frankToUpdate.qty + 1 };
         }
+        return item;
       });
       setCartItems(updatedCart);
       setTotalPrice(prevTotal => prevTotal + frankToUpdate.price);
@@ -79,9 +80,10 @@ export const StateContext = ({ children }) => {
 
     if (operation === 'decrease') {
       const updatedCart = cartItems?.map(item => {
-        if (frankToUpdate && frankToUpdate.qty > 1) {
+        if (item._id === frankToUpdate._id && frankToUpdate.qty > 1) {
           return { ...frankToUpdate, qty: frankToUpdate.qty - 1 };
         }
+        return item;
       });
       setCartItems(updatedCart);
       setTotalPrice(prevTotal => prevTotal - frankToUpdate.price);
