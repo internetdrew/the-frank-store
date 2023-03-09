@@ -52,7 +52,7 @@ const Cart = () => {
           </div>
         </div>
 
-        <div className='border-2 rounded-xl p-4'>
+        <div className='border-2 rounded-xl p-4 h-80'>
           <h2 className='font-semibold text-lg mb-2'>Order Summary</h2>
           {activeCoupon ? (
             <p className='text-center text-gray-500 py-5'>
@@ -79,7 +79,7 @@ const Cart = () => {
           )}
           <div className='flex items-center justify-between font-semibold'>
             <p>Subtotal</p>
-            <p>${totalPrice.toFixed(2)}</p>
+            <p>${parseFloat(totalPrice.toFixed(2))}</p>
           </div>
           {activeCoupon ? (
             <div className='flex items-center justify-between font-semibold'>
@@ -93,7 +93,7 @@ const Cart = () => {
           </div>
           <div className='flex items-center justify-between font-semibold mt-2'>
             <p>Total</p>
-            <p>${finalTotal.toFixed(2)}</p>
+            <p>${parseFloat(finalTotal.toFixed(2))}</p>
           </div>
           <button className='bg-orange-500 w-full py-2 rounded-full mt-6 text-white font-semibold text-lg'>
             Checkout

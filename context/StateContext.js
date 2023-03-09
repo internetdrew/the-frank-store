@@ -68,8 +68,8 @@ export const StateContext = ({ children }) => {
     if (operation === 'increase') {
       // frankToUpdate.qty += 1; // Should document this
       const updatedCart = cartItems?.map(item => {
-        if (item._id === frankToUpdate._id) {
-          return { ...frankToUpdate, qty: frankToUpdate.qty + 1 };
+        if (item._id === itemId) {
+          return { ...item, qty: item.qty + 1 };
         }
         return item;
       });
@@ -80,8 +80,8 @@ export const StateContext = ({ children }) => {
 
     if (operation === 'decrease') {
       const updatedCart = cartItems?.map(item => {
-        if (item._id === frankToUpdate._id && frankToUpdate.qty > 1) {
-          return { ...frankToUpdate, qty: frankToUpdate.qty - 1 };
+        if (item._id === itemId && item.qty > 1) {
+          return { ...item, qty: item.qty - 1 };
         }
         return item;
       });
@@ -89,6 +89,14 @@ export const StateContext = ({ children }) => {
       setTotalPrice(prevTotal => prevTotal - frankToUpdate.price);
       setTotalQty(prevQty => prevQty - 1);
     }
+  };
+
+  const removeItem = id => {
+    const item = cartItems?.find(item => item._id === id);
+    const updatedCart = cartItems.filter(item => item._id !== id);
+    setCartItems(updatedCart);
+    setTotalPrice(prevPrice => prevPrice - item.price * item.qty);
+    setTotalQty(prevQty => prevQty - item.qty);
   };
 
   const handleDiscount = () => {
@@ -115,6 +123,7 @@ export const StateContext = ({ children }) => {
         changeCartItemQty,
         handleDiscount,
         setCouponCode,
+        removeItem,
       }}
     >
       {children}

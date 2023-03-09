@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { urlFor } from '@/lib/sanityClient';
-import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlineMinus, AiOutlinePlus, AiFillDelete } from 'react-icons/ai';
 import { useStateContext } from '@/context/StateContext';
 
 const CartItem = ({ item }) => {
-  const { changeCartItemQty } = useStateContext();
+  const { changeCartItemQty, removeItem } = useStateContext();
   return (
-    <div className='grid grid-cols-6 border-b-2 py-4 items-center'>
+    <div className='grid grid-cols-6 border-b-2 py-4 items-center relative'>
       <div className='h-28 w-28 rounded-xl overflow-hidden'>
         <Image
           src={urlFor(item?.image)?.url()}
@@ -20,7 +20,7 @@ const CartItem = ({ item }) => {
       </div>
       <div className='font-semibold col-span-2'>{item?.title} Frank</div>
       <div className='font-semibold'>${item?.price}</div>
-      {/* Quantity Toggle */}
+
       <div className='font-semibold flex'>
         <div className='border-2 flex rounded-full px-2'>
           <button
@@ -41,9 +41,16 @@ const CartItem = ({ item }) => {
         </div>
       </div>
 
-      {/* End Quantity Toggle */}
       <div className='font-semibold'>
         ${(item?.price * item?.qty).toFixed(2)}
+      </div>
+      <div
+        className='absolute right-6 text-xl text-red-600 cursor-pointer'
+        onClick={() => removeItem(item?._id)}
+      >
+        <span>
+          <AiFillDelete />
+        </span>
       </div>
     </div>
   );
