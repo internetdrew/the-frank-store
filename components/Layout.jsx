@@ -3,7 +3,7 @@ import { Navbar, Footer } from '@/components';
 
 const Layout = ({ children }) => {
   return (
-    <div className='min-h-screen flex flex-col'>
+    <div className='h-screen flex flex-col'>
       <Head>
         <title>The Frank Store</title>
       </Head>
