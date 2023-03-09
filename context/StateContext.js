@@ -75,9 +75,10 @@ export const StateContext = ({ children }) => {
     }
   };
 
-  const handleDiscount = code => {
+  const handleDiscount = () => {
     if (couponCode.trim().toLowerCase() === 'festivus') {
       setActiveCoupon(true);
+      setCheckoutDiscount(totalPrice / 2);
       setCouponCode('');
     }
   };
@@ -90,6 +91,7 @@ export const StateContext = ({ children }) => {
         totalQty,
         currentFrankQty,
         couponCode,
+        checkoutDiscount,
         increaseQty,
         decreaseQty,
         addToCart,

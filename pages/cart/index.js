@@ -4,15 +4,21 @@ import CartItem from '@/components/CartItem';
 
 const Cart = () => {
   const [activeCoupon, setActiveCoupon] = useState(false);
-  const { cartItems, totalPrice, handleDiscount, setCouponCode, couponCode } =
-    useStateContext();
+  const {
+    cartItems,
+    totalPrice,
+    handleDiscount,
+    setCouponCode,
+    couponCode,
+    checkoutDiscount,
+  } = useStateContext();
 
   const inputRef = useRef(null);
 
   const cartLabels = ['', 'product', 'price', 'quantity', 'total'];
-  const discount = activeCoupon ? (totalPrice / 2).toFixed(2) : 0;
+  // const discount = activeCoupon ? (totalPrice / 2).toFixed(2) : 0;
   const deliveryFee = cartItems.length === 0 ? 0 : 9.99;
-  const finalTotal = totalPrice + deliveryFee - discount;
+  const finalTotal = totalPrice + deliveryFee - checkoutDiscount;
 
   return (
     <div className='mt-32 mx-20'>
@@ -69,7 +75,7 @@ const Cart = () => {
           </div>
           <div className='flex items-center justify-between font-semibold'>
             <p>Discount</p>
-            <p>-${discount}</p>
+            <p>-${checkoutDiscount.toFixed(2)}</p>
           </div>
           <div className='flex items-center justify-between font-semibold border-b-2 pb-2'>
             <p>Newman Delivery Fee</p>
