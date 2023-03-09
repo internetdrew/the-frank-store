@@ -6,7 +6,6 @@ import { useStateContext } from '@/context/StateContext';
 
 const CartItem = ({ item }) => {
   const { changeCartItemQty } = useStateContext();
-  console.log(item);
   return (
     <div className='grid grid-cols-6 border-b-2 py-4 items-center'>
       <div className='h-28 w-28 rounded-xl overflow-hidden'>

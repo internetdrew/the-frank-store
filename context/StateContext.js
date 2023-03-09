@@ -8,6 +8,9 @@ export const StateContext = ({ children }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQty, setTotalQty] = useState(0);
   const [currentFrankQty, setCurrentFrankQty] = useState(1);
+  const [couponCode, setCouponCode] = useState('');
+  const [checkoutDiscount, setCheckoutDiscount] = useState(0);
+  const [activeCoupon, setActiveCoupon] = useState(false);
 
   const addToCart = (frank, qty) => {
     const frankAlreadyInCart = cartItems?.some(item => item?._id === frank._id);
@@ -72,6 +75,13 @@ export const StateContext = ({ children }) => {
     }
   };
 
+  const handleDiscount = code => {
+    if (couponCode.trim().toLowerCase() === 'festivus') {
+      setActiveCoupon(true);
+      setCouponCode('');
+    }
+  };
+
   return (
     <Context.Provider
       value={{
@@ -79,10 +89,13 @@ export const StateContext = ({ children }) => {
         totalPrice,
         totalQty,
         currentFrankQty,
+        couponCode,
         increaseQty,
         decreaseQty,
         addToCart,
         changeCartItemQty,
+        handleDiscount,
+        setCouponCode,
       }}
     >
       {children}
