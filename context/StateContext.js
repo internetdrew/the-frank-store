@@ -7,12 +7,12 @@ const Context = createContext();
 export const StateContext = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
-  const [total, setTotal] = useState(0);
   const [totalQty, setTotalQty] = useState(0);
   const [currentFrankQty, setCurrentFrankQty] = useState(1);
   const [couponCode, setCouponCode] = useState('');
   const [checkoutDiscount, setCheckoutDiscount] = useState(0);
   const [activeCoupon, setActiveCoupon] = useState(false);
+  const [shippingRate, setShippingRate] = useState(9.99);
 
   useEffect(() => {
     if (activeCoupon) {
@@ -120,7 +120,7 @@ export const StateContext = ({ children }) => {
         couponCode,
         checkoutDiscount,
         activeCoupon,
-        total,
+        shippingRate,
         increaseQty,
         decreaseQty,
         addToCart,

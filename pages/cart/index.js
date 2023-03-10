@@ -12,13 +12,14 @@ const Cart = () => {
     checkoutDiscount,
     activeCoupon,
     total,
+    shippingRate,
   } = useStateContext();
 
   const inputRef = useRef(null);
 
   const cartLabels = ['', 'product', 'price', 'qty', 'total'];
 
-  const shippingRate = cartItems.length ? 9.99 : 0;
+  const dynamicShipping = cartItems.length ? shippingRate : 0;
 
   return (
     <div className='mt-32 mx-20'>
@@ -89,11 +90,11 @@ const Cart = () => {
           ) : null}
           <div className='flex items-center justify-between font-semibold border-b-2 pb-1'>
             <p>Newman Delivery Fee</p>
-            <p>${shippingRate}</p>
+            <p>${dynamicShipping}</p>
           </div>
           <div className='flex items-center justify-between font-semibold mt-2'>
             <p>Total</p>
-            <p>${(subtotal + shippingRate + checkoutDiscount).toFixed(2)}</p>
+            <p>${(subtotal + dynamicShipping + checkoutDiscount).toFixed(2)}</p>
           </div>
           <button className='bg-orange-500 w-full py-2 rounded-full mt-6 text-white font-semibold text-lg'>
             Checkout
