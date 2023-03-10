@@ -5,20 +5,20 @@ import CartItem from '@/components/CartItem';
 const Cart = () => {
   const {
     cartItems,
-    totalPrice,
+    subtotal,
     handleDiscount,
     setCouponCode,
     couponCode,
     checkoutDiscount,
     activeCoupon,
+    total,
   } = useStateContext();
 
   const inputRef = useRef(null);
 
   const cartLabels = ['', 'product', 'price', 'qty', 'total'];
 
-  const deliveryFee = cartItems.length === 0 ? 0 : 9.99;
-  const finalTotal = totalPrice + deliveryFee - checkoutDiscount;
+  const shippingRate = cartItems.length ? 9.99 : 0;
 
   return (
     <div className='mt-32 mx-20'>
@@ -79,7 +79,7 @@ const Cart = () => {
           )}
           <div className='flex items-center justify-between font-semibold'>
             <p>Subtotal</p>
-            <p>${parseFloat(totalPrice.toFixed(2))}</p>
+            <p>${subtotal.toFixed(2)}</p>
           </div>
           {activeCoupon ? (
             <div className='flex items-center justify-between font-semibold'>
@@ -89,11 +89,11 @@ const Cart = () => {
           ) : null}
           <div className='flex items-center justify-between font-semibold border-b-2 pb-1'>
             <p>Newman Delivery Fee</p>
-            <p>${deliveryFee}</p>
+            <p>${shippingRate}</p>
           </div>
           <div className='flex items-center justify-between font-semibold mt-2'>
             <p>Total</p>
-            <p>${parseFloat(finalTotal.toFixed(2))}</p>
+            <p>${(subtotal + shippingRate + checkoutDiscount).toFixed(2)}</p>
           </div>
           <button className='bg-orange-500 w-full py-2 rounded-full mt-6 text-white font-semibold text-lg'>
             Checkout

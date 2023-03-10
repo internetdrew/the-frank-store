@@ -6,7 +6,8 @@ const Context = createContext();
 
 export const StateContext = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [subtotal, setSubtotal] = useState(0);
+  const [total, setTotal] = useState(0);
   const [totalQty, setTotalQty] = useState(0);
   const [currentFrankQty, setCurrentFrankQty] = useState(1);
   const [couponCode, setCouponCode] = useState('');
@@ -14,8 +15,10 @@ export const StateContext = ({ children }) => {
   const [activeCoupon, setActiveCoupon] = useState(false);
 
   useEffect(() => {
-    if (activeCoupon) setCheckoutDiscount(totalPrice / 2);
-  }, [totalPrice]);
+    if (activeCoupon) {
+      setCheckoutDiscount(subtotal / 2);
+    }
+  }, [subtotal]);
 
   const addToCart = (frank, qty) => {
     const frankAlreadyInCart = cartItems?.some(item => item?._id === frank._id);
@@ -37,7 +40,7 @@ export const StateContext = ({ children }) => {
       setCartItems(updatedCartItems);
     }
 
-    setTotalPrice(prevPrice => prevPrice + frank.price * qty);
+    setSubtotal(prevPrice => prevPrice + frank.price * qty);
     setTotalQty(prevQty => prevQty + qty);
 
     toast.success(
@@ -74,7 +77,7 @@ export const StateContext = ({ children }) => {
         return item;
       });
       setCartItems(updatedCart);
-      setTotalPrice(prevTotal => prevTotal + frankToUpdate.price);
+      setSubtotal(prevTotal => prevTotal + frankToUpdate.price);
       setTotalQty(prevQty => prevQty + 1);
     }
 
@@ -86,7 +89,7 @@ export const StateContext = ({ children }) => {
         return item;
       });
       setCartItems(updatedCart);
-      setTotalPrice(prevTotal => prevTotal - frankToUpdate.price);
+      setSubtotal(prevTotal => prevTotal - frankToUpdate.price);
       setTotalQty(prevQty => prevQty - 1);
     }
   };
@@ -95,14 +98,14 @@ export const StateContext = ({ children }) => {
     const item = cartItems?.find(item => item._id === id);
     const updatedCart = cartItems.filter(item => item._id !== id);
     setCartItems(updatedCart);
-    setTotalPrice(prevPrice => prevPrice - item.price * item.qty);
+    setSubtotal(prevPrice => prevPrice - item.price * item.qty);
     setTotalQty(prevQty => prevQty - item.qty);
   };
 
   const handleDiscount = () => {
     if (couponCode.trim().toLowerCase() === 'festivus') {
       setActiveCoupon(true);
-      setCheckoutDiscount(totalPrice / 2);
+      setCheckoutDiscount(subtotal / 2);
       setCouponCode('');
     }
   };
@@ -111,12 +114,13 @@ export const StateContext = ({ children }) => {
     <Context.Provider
       value={{
         cartItems,
-        totalPrice,
+        subtotal,
         totalQty,
         currentFrankQty,
         couponCode,
         checkoutDiscount,
         activeCoupon,
+        total,
         increaseQty,
         decreaseQty,
         addToCart,
