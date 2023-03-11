@@ -43,7 +43,6 @@ export default async function handler(req, res) {
         success_url: `${req.headers.origin}/confirmed`,
         cancel_url: `${req.headers.origin}/cart`,
       };
-      console.log(params);
       const session = await stripe.checkout.sessions.create(params);
       res.status(200).json(session);
     } catch (err) {
