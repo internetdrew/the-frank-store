@@ -2,6 +2,9 @@ import { useRef, useState, useEffect } from 'react';
 import { useStateContext } from '@/context/StateContext';
 import { CartItem } from '@/components';
 import getStripe from '@/lib/getStripe';
+import { toast } from 'react-hot-toast';
+import { loadGetInitialProps } from 'next/dist/shared/lib/utils';
+import { FiCloudLightning } from 'react-icons/fi';
 
 const Cart = () => {
   const {
@@ -21,13 +24,19 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     const stripe = await getStripe();
-
     const res = await fetch('/api/checkout-sessions', {
       method: 'POST',
-      headers: {},
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cartItems),
     });
+
+    if (res.status === 500) return;
     const data = await res.json();
     console.log(data);
+    toast.loading('Redirecting');
+    stripe.redirectToCheckout({ sessionId: data.id });
   };
 
   return (
@@ -103,7 +112,7 @@ const Cart = () => {
           </div>
           <div className='flex items-center justify-between font-semibold mt-2'>
             <p>Total</p>
-            <p>${(subtotal + dynamicShipping + checkoutDiscount).toFixed(2)}</p>
+            <p>${(subtotal + dynamicShipping - checkoutDiscount).toFixed(2)}</p>
           </div>
           <div className='mt-auto'>
             <button
