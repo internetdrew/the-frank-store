@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useStateContext } from '@/context/StateContext';
-import CartItem from '@/components/CartItem';
+import { CartItem } from '@/components';
+import getStripe from '@/lib/getStripe';
 
 const Cart = () => {
   const {
@@ -11,15 +12,23 @@ const Cart = () => {
     couponCode,
     checkoutDiscount,
     activeCoupon,
-    total,
     shippingRate,
   } = useStateContext();
 
   const inputRef = useRef(null);
-
   const cartLabels = ['', 'product', 'price', 'qty', 'total'];
-
   const dynamicShipping = cartItems.length ? shippingRate : 0;
+
+  const handleCheckout = async () => {
+    const stripe = await getStripe();
+
+    const res = await fetch('/api/checkout-sessions', {
+      method: 'POST',
+      headers: {},
+    });
+    const data = await res.json();
+    console.log(data);
+  };
 
   return (
     <div className='mt-32 mx-20'>
@@ -53,7 +62,7 @@ const Cart = () => {
           </div>
         </div>
 
-        <div className='border-2 rounded-xl p-4 h-80'>
+        <div className='border-2 rounded-xl p-4 flex-flex-col'>
           <h2 className='font-semibold text-lg mb-2'>Order Summary</h2>
           {activeCoupon ? (
             <p className='text-center text-gray-500 py-5'>
@@ -96,9 +105,15 @@ const Cart = () => {
             <p>Total</p>
             <p>${(subtotal + dynamicShipping + checkoutDiscount).toFixed(2)}</p>
           </div>
-          <button className='bg-orange-500 w-full py-2 rounded-full mt-6 text-white font-semibold text-lg'>
-            Checkout
-          </button>
+          <div className='mt-auto'>
+            <button
+              type='button'
+              className='w-full text-white font-semibold bg-orange-500 py-2 rounded-full text-lg'
+              onClick={handleCheckout}
+            >
+              Checkout
+            </button>
+          </div>
         </div>
       </div>
     </div>
