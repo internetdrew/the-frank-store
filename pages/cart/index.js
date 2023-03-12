@@ -1,10 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import { useStateContext } from '@/context/StateContext';
-import { CartItem } from '@/components';
+import { CartItem, CheckoutForm } from '@/components';
 import getStripe from '@/lib/getStripe';
 import { toast } from 'react-hot-toast';
-import { loadGetInitialProps } from 'next/dist/shared/lib/utils';
-import { FiCloudLightning } from 'react-icons/fi';
+import { Elements } from '@stripe/react-stripe-js';
 
 const Cart = () => {
   const {
@@ -16,26 +15,32 @@ const Cart = () => {
     checkoutDiscount,
     activeCoupon,
     shippingRate,
+    checkingOut,
+    clientSecret,
+    setClientSecret,
   } = useStateContext();
 
   const inputRef = useRef(null);
   const cartLabels = ['', 'product', 'price', 'qty', 'total'];
   const dynamicShipping = cartItems.length ? shippingRate : 0;
 
-  const handleCheckout = async () => {
-    const stripe = await getStripe();
-    const res = await fetch('/api/checkout-sessions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(cartItems),
-    });
+  const stripePromise = getStripe();
 
-    if (res.status === 500) return;
-    const data = await res.json();
-    toast.loading('Redirecting');
-    stripe.redirectToCheckout({ sessionId: data.id });
+  useEffect(() => {
+    fetch('/api/create-payment-intent', {
+      method: 'POST',
+      body: JSON.stringify({ subtotal, checkoutDiscount, shippingRate }),
+    })
+      .then(res => res.json())
+      .then(data => setClientSecret(data.clientSecret));
+  }, []);
+
+  const appearance = {
+    theme: 'stripe',
+  };
+  const options = {
+    clientSecret,
+    appearance,
   };
 
   return (
@@ -114,13 +119,15 @@ const Cart = () => {
             <p>${(subtotal + dynamicShipping - checkoutDiscount).toFixed(2)}</p>
           </div>
           <div className='mt-auto'>
-            <button
-              type='button'
-              className='w-full text-white font-semibold bg-orange-500 py-2 rounded-full text-lg'
-              onClick={handleCheckout}
-            >
-              Checkout
-            </button>
+            {clientSecret && (
+              <Elements
+                key={clientSecret}
+                options={options}
+                stripe={stripePromise}
+              >
+                <CheckoutForm />
+              </Elements>
+            )}
           </div>
         </div>
       </div>

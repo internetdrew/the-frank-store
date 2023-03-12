@@ -13,6 +13,8 @@ export const StateContext = ({ children }) => {
   const [checkoutDiscount, setCheckoutDiscount] = useState(0);
   const [activeCoupon, setActiveCoupon] = useState(false);
   const [shippingRate, setShippingRate] = useState(9.99);
+  const [checkingOut, setCheckingOut] = useState(false);
+  const [clientSecret, setClientSecret] = useState('');
 
   useEffect(() => {
     if (activeCoupon) {
@@ -121,6 +123,7 @@ export const StateContext = ({ children }) => {
         checkoutDiscount,
         activeCoupon,
         shippingRate,
+        clientSecret,
         increaseQty,
         decreaseQty,
         addToCart,
@@ -128,6 +131,8 @@ export const StateContext = ({ children }) => {
         handleDiscount,
         setCouponCode,
         removeItem,
+        setCheckingOut,
+        setClientSecret,
       }}
     >
       {children}
