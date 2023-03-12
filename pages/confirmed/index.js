@@ -10,8 +10,9 @@ const Confirmation = () => {
         </h1>
         <Image
           src={newman}
-          width={500}
-          height={500}
+          alt='Kramer and Newman driving a delivery truck gif'
+          width='auto'
+          height='auto'
           priority
           className='shadow-xl'
         />
