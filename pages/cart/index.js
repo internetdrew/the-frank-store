@@ -44,12 +44,12 @@ const Cart = () => {
   };
 
   return (
-    <div className='mt-32 mx-20'>
+    <div className='mt-32'>
       <h1 className='text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-600'>
         Your Shopping Cart
       </h1>
-      <div className='grid md:grid-flow-col gap-20 mt-16'>
-        <div className='lg:col-span-2'>
+      <div className='flex flex-col xl:flex-row xl:gap-4 mt-16'>
+        <div>
           <div>
             <div className='grid grid-cols-6 border-b-2'>
               {cartLabels.map((section, i) => {

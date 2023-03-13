@@ -6,7 +6,7 @@ const Navbar = () => {
   const { totalQty } = useStateContext();
 
   return (
-    <nav className='fixed top-0 w-full flex items-center p-2 sm:px-6 z-10 bg-gradient-to-b from-stone-100 via-stone-50'>
+    <nav className='fixed top-0 right-0 w-full flex items-center p-2 2xl:px-56 z-10 bg-gradient-to-b from-stone-100 via-stone-50'>
       <div className='p-5'>
         <Link
           href='/'
@@ -16,7 +16,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className='flex items-center p-5 text-lg ml-auto'>
-        <div className='hidden sm:inline-flex border-r-2 pr-4 border-gray-300'>
+        <div className='hidden border-r-2 pr-4 border-gray-300'>
           <FiSearch className='cursor-pointer' />
         </div>
         <div className='pl-4 w-24'>

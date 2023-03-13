@@ -8,7 +8,7 @@ const CartItem = ({ item }) => {
   const { changeCartItemQty, removeItem } = useStateContext();
   return (
     <div className='grid grid-cols-6 border-b-2 py-4 items-center relative'>
-      <div className='h-28 w-28 rounded-xl overflow-hidden'>
+      <div className='h-28 w-28 rounded-xl overflow-hidden mr-2'>
         <Image
           src={urlFor(item?.image)?.url()}
           alt='photo of frank costanza'

@@ -7,7 +7,7 @@ const Franks = ({ franks }) => {
         <h1 className='text-center text-4xl font-bold mb-12 lg:mb-20 text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-600'>
           Shop your favorite Frank Costanza moments
         </h1>
-        <div className='grid grid-cols-1 gap-16 gap-y-36 md:grid-cols-3 w-full'>
+        <div className='grid gap-16 gap-y-36 md:grid-cols-2 lg:grid-cols-3 w-full'>
           {franks.map(frank => (
             <FrankCard key={frank._id} frank={frank} />
           ))}
