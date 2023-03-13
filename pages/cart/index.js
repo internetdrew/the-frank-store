@@ -43,11 +43,11 @@ const Cart = () => {
 
   return (
     <div className='mt-32 p-2'>
-      <h1 className='text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-600 text-center'>
+      <h1 className='text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-600 text-center mb-10'>
         Your Shopping Cart
       </h1>
-      <div className='flex gap-10 flex-col'>
-        <div>
+      <div className='flex flex-col lg:flex-row gap-10 '>
+        <div className='lg:h-96 overflow-y-scroll p-4 bg-white'>
           {cartItems.map(item => (
             <CartItem key={item?._id} item={item} />
           ))}
