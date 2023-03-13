@@ -7,8 +7,8 @@ import { useStateContext } from '@/context/StateContext';
 const CartItem = ({ item }) => {
   const { changeCartItemQty, removeItem } = useStateContext();
   return (
-    <div className='grid grid-cols-6 border-b-2 py-4 items-center relative'>
-      <div className='h-28 w-28 rounded-xl overflow-hidden mr-2'>
+    <div className='border-b-2 p-4 flex flex-col sm:flex-row items-center gap-2 sm:gap-10'>
+      <div className='rounded-xl overflow-hidden h-40 w-40'>
         <Image
           src={urlFor(item?.image)?.url()}
           alt='photo of frank costanza'
@@ -18,40 +18,41 @@ const CartItem = ({ item }) => {
           className='w-full h-full object-cover'
         />
       </div>
-      <div className='font-semibold col-span-2'>{item?.title} Frank</div>
-      <div className='font-semibold'>${item?.price}</div>
-
-      <div className='font-semibold flex'>
-        <div className='border-2 flex rounded-full px-2'>
-          <button
-            type='button'
-            className='p-2'
-            onClick={() => changeCartItemQty(item?._id, 'decrease')}
-          >
-            <AiOutlineMinus />
-          </button>
-          <p className='p-2'>{item?.qty}</p>
-          <button
-            type='button'
-            className='p-2'
-            onClick={() => changeCartItemQty(item?._id, 'increase')}
-          >
-            <AiOutlinePlus />
-          </button>
-        </div>
+      <div className='font-semibold text-center text-lg flex-2'>
+        {item?.title} Frank
+      </div>
+      <div className='flex-1'>
+        <div className='font-semibold'>${item?.price}</div>
       </div>
 
+      <div className='flex-1 flex'>
+        <button
+          type='button'
+          className='p-2 text-red-500'
+          onClick={() => changeCartItemQty(item?._id, 'decrease')}
+        >
+          <AiOutlineMinus />
+        </button>
+        <p className='p-2 font-bold'>{item?.qty}</p>
+        <button
+          type='button'
+          className='p-2 text-green-700'
+          onClick={() => changeCartItemQty(item?._id, 'increase')}
+        >
+          <AiOutlinePlus />
+        </button>
+      </div>
       <div className='font-semibold'>
         ${(item?.price * item?.qty).toFixed(2)}
       </div>
-      <div
-        className='absolute right-6 text-xl text-red-600 cursor-pointer'
-        onClick={() => removeItem(item?._id)}
-      >
-        <span>
-          <AiFillDelete />
-        </span>
-      </div>
+      {/* <div
+          className='absolute text-xl text-red-600 cursor-pointer right-2'
+          onClick={() => removeItem(item?._id)}
+        >
+          <span>
+            <AiFillDelete />
+          </span>
+        </div> */}
     </div>
   );
 };

@@ -6,7 +6,7 @@ const Navbar = () => {
   const { totalQty } = useStateContext();
 
   return (
-    <nav className='fixed top-0 right-0 w-full flex items-center p-2 2xl:px-56 z-10 bg-gradient-to-b from-stone-100 via-stone-50'>
+    <nav className='fixed top-0 right-0 left-0 flex items-center p-2 2xl:px-64 z-10 bg-gradient-to-b from-stone-100 via-stone-50'>
       <div className='p-5'>
         <Link
           href='/'

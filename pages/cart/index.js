@@ -2,7 +2,6 @@ import { useRef, useState, useEffect } from 'react';
 import { useStateContext } from '@/context/StateContext';
 import { CartItem, CheckoutForm } from '@/components';
 import getStripe from '@/lib/getStripe';
-import { toast } from 'react-hot-toast';
 import { Elements } from '@stripe/react-stripe-js';
 
 const Cart = () => {
@@ -21,7 +20,6 @@ const Cart = () => {
   } = useStateContext();
 
   const inputRef = useRef(null);
-  const cartLabels = ['', 'product', 'price', 'qty', 'total'];
   const dynamicShipping = cartItems.length ? shippingRate : 0;
 
   const stripePromise = getStripe();
@@ -44,35 +42,15 @@ const Cart = () => {
   };
 
   return (
-    <div className='mt-32'>
-      <h1 className='text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-600'>
+    <div className='mt-32 p-2'>
+      <h1 className='text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-600 text-center'>
         Your Shopping Cart
       </h1>
-      <div className='flex flex-col xl:flex-row xl:gap-4 mt-16'>
+      <div className='flex gap-10 flex-col'>
         <div>
-          <div>
-            <div className='grid grid-cols-6 border-b-2'>
-              {cartLabels.map((section, i) => {
-                const str =
-                  section === 'product'
-                    ? 'capitalize font-semibold text-lg col-span-2'
-                    : 'capitalize font-semibold text-lg';
-
-                return (
-                  <div key={i} className={str}>
-                    {section}
-                  </div>
-                );
-              })}
-            </div>
-            <div className='lg:h-96 overflow-y-scroll'>
-              <div>
-                {cartItems.map(item => (
-                  <CartItem key={item?._id} item={item} />
-                ))}
-              </div>
-            </div>
-          </div>
+          {cartItems.map(item => (
+            <CartItem key={item?._id} item={item} />
+          ))}
         </div>
 
         <div className='border-2 rounded-xl p-4 flex-flex-col'>
