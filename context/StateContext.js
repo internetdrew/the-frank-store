@@ -83,7 +83,7 @@ export const StateContext = ({ children }) => {
       setTotalQty(prevQty => prevQty + 1);
     }
 
-    if (operation === 'decrease') {
+    if (operation === 'decrease' && frankToUpdate.qty > 1) {
       const updatedCart = cartItems?.map(item => {
         if (item._id === itemId && item.qty > 1) {
           return { ...item, qty: item.qty - 1 };

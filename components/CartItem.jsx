@@ -45,14 +45,14 @@ const CartItem = ({ item }) => {
       <div className='font-semibold'>
         ${(item?.price * item?.qty).toFixed(2)}
       </div>
-      {/* <div
-          className='absolute text-xl text-red-600 cursor-pointer right-2'
-          onClick={() => removeItem(item?._id)}
-        >
-          <span>
-            <AiFillDelete />
-          </span>
-        </div> */}
+      <div
+        className=' text-xl text-red-600 cursor-pointer right-2'
+        onClick={() => removeItem(item?._id)}
+      >
+        <span>
+          <AiFillDelete />
+        </span>
+      </div>
     </div>
   );
 };

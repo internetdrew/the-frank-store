@@ -10,8 +10,13 @@ import { useStateContext } from '@/context/StateContext';
 export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
-  const { subtotal, checkoutDiscount, shippingRate, setClientSecret } =
-    useStateContext();
+  const {
+    subtotal,
+    checkoutDiscount,
+    shippingRate,
+    setClientSecret,
+    setCheckingOut,
+  } = useStateContext();
 
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState(null);
@@ -80,7 +85,7 @@ export default function CheckoutForm() {
 
   return (
     <form id='payment-form' onSubmit={handleSubmit} className='mt-4'>
-      <p className='text-gray-700 mb-2'>
+      <p className='text-gray-700 mb-2 text-center'>
         Use credit card <strong>4242 4242 4242 4242</strong> for full checkout
         flow!
       </p>
