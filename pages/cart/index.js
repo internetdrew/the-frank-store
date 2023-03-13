@@ -82,7 +82,7 @@ const Cart = () => {
               Discount active for 50% off
             </p>
           ) : (
-            <div className='flex items-center justify-between gap-6 mb-10 mt-2'>
+            <div className='flex items-center justify-between gap-6 mb-10 mt-2 transition-all duration-300'>
               <input
                 type='text'
                 ref={inputRef}
