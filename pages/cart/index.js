@@ -21,6 +21,9 @@ const Cart = () => {
 
   const inputRef = useRef(null);
   const dynamicShipping = cartItems.length ? shippingRate : 0;
+  const cartStyles = cartItems.length
+    ? 'flex flex-col lg:flex-row gap-10'
+    : 'flex flex-col gap-10';
 
   const stripePromise = getStripe();
 
@@ -46,12 +49,16 @@ const Cart = () => {
       <h1 className='text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-600 text-center mb-10'>
         Your Shopping Cart
       </h1>
-      <div className='flex flex-col lg:flex-row gap-10 '>
-        <div className='lg:h-96 overflow-y-scroll p-4 bg-white'>
-          {cartItems.map(item => (
-            <CartItem key={item?._id} item={item} />
-          ))}
-        </div>
+      <div className={cartStyles}>
+        {cartItems.length ? (
+          <div className='lg:h-96 overflow-y-scroll p-4 bg-white'>
+            {cartItems.map(item => (
+              <CartItem key={item?._id} item={item} />
+            ))}
+          </div>
+        ) : (
+          <div className='text-center text-2xl'>No items in cart</div>
+        )}
 
         <div className='border-2 rounded-xl p-4 flex-flex-col'>
           <h2 className='font-semibold text-lg mb-2'>Order Summary</h2>
