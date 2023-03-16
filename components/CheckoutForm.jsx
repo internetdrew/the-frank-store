@@ -8,6 +8,7 @@ import {
 import { useStateContext } from '@/context/StateContext';
 
 export default function CheckoutForm() {
+  const baseUrl = window.location.origin;
   const stripe = useStripe();
   const elements = useElements();
   const {
@@ -65,13 +66,14 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: 'http://localhost:3000/confirmed',
+        return_url: `${baseUrl}/confirmed`,
       },
     });
 
     if (error.type === 'card_error' || error.type === 'validation_error') {
       setMessage(error.message);
     } else {
+      console.log(window.location.origin);
       setMessage('An unexpected error occurred.');
     }
 
