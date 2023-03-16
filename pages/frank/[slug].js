@@ -1,7 +1,9 @@
-import { client, urlFor } from '@/lib/sanityClient';
 import Image from 'next/image';
+import Link from 'next/link';
+import { client, urlFor } from '@/lib/sanityClient';
 import { RageMeter } from '@/components';
-import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlineMinus, AiOutlinePlus, AiFillCaretLeft } from 'react-icons/ai';
+import { BsChevronLeft } from 'react-icons/bs';
 import { useStateContext } from '@/context/StateContext';
 
 export const getStaticPaths = async () => {
@@ -37,7 +39,7 @@ const FrankDetails = ({ frank }) => {
     useStateContext();
 
   return (
-    <section className='p-4 md:p-32 mt-32 lg:mt-10'>
+    <section className='p-4 md:p-32 mt-36 lg:mt-10 flex flex-col'>
       <div className='grid lg:grid-cols-2 gap-14 p-4'>
         <div className='h-full'>
           <Image
@@ -90,6 +92,13 @@ const FrankDetails = ({ frank }) => {
           </button>
         </div>
       </div>
+      <Link
+        href={'/'}
+        className='ml-auto mt-4 pr-6 p-2 font-semibold text-lg flex items-center'
+      >
+        <BsChevronLeft className='text-lg mr-2' />
+        Continue shopping
+      </Link>
     </section>
   );
 };
