@@ -1,38 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# The Frank Store
 
-## Getting Started
+The Frank Store is an e-commerce web app designed exclusively for devoted Frank Costanza fans to browse and purchase from a collection of digital photos capturing his classic moments.
 
-First, run the development server:
+![Application screenshot](./public/screenshot.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Table of contents
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Introduction](#introduction)
+- [Technology](#technology)
+- [Features](#features)
+- [Roadmap](#roadmap)
+- [Visit LessonCollab](#visit-lessoncollab)
+- [Let's Connect](#lets-connect)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Introduction
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+With Next.js (React) at its core, **The Frank Store** provides a smooth and intuitive user interface, ensuring effortless navigation through a catalog of Frank Costanza images. The integration of Sanity's headless CMS enables curation of a diverse range of high-quality, nostalgia-boosting photos showcasing the very best of Frank Costanza's comedic moments.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+By incorporating Stripe custom checkout, **The Frank Store** is built to prioritize secure transactions.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Technology
 
-## Learn More
+### Next.js
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js is a versatile React framework that powers **The Frank Store**, enabling a seamless and performant user experience. With Next.js, **The Frank Store** benefits from efficient rendering, server-side rendering capabilities, and dynamic routing.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### React Context
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- React Context is used for app state management. Through the context provider, we enable all child components to leverage functions that manage cart items, manipulate item quantity, and incorporate discount coupons at checkout.
 
-## Deploy on Vercel
+### Sanity Headless CMS
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- With Sanity, there are schemas for the home page banner, which episode the Frank moment is from, and all other Frank details:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Stripe
+
+- Stripe is used for a custom checkout experience.
+
+## Features
+
+### React Hot Toast
+
+- [React Hot Toast](https://react-hot-toast.com/) is used for a great package for leveraging toast style app notifications. I deployed them here to handle notifications based on cart changes.
+
+## Live Demo
+
+[Visit The Frank Store today!](https://the-frank-store.vercel.app/)
+
+## Let's Connect
+
+- [Follow me on Twitter](https://twitter.com/_internetdrew)
+- [Let's connect on LinkedIn](https://www.linkedin.com/in/internetdrew/)

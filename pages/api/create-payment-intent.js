@@ -11,7 +11,6 @@ const calculateAmount = ({ subtotal, checkoutDiscount, shippingRate }) => {
 export default async function handler(req, res) {
   const { subtotal, checkoutDiscount, shippingRate } = JSON.parse(req.body);
 
-  // Create a PaymentIntent with the order amount and currency
   const paymentIntent = await stripe.paymentIntents.create({
     amount: calculateAmount({ subtotal, checkoutDiscount, shippingRate }),
     currency: 'usd',

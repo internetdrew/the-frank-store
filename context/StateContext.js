@@ -56,6 +56,7 @@ export const StateContext = ({ children }) => {
   const increaseQty = () => {
     setCurrentFrankQty(prevQty => prevQty + 1);
   };
+
   const decreaseQty = () => {
     setCurrentFrankQty(prevQty => {
       if (prevQty - 1 < 1) return 1;
@@ -111,6 +112,14 @@ export const StateContext = ({ children }) => {
     }
   };
 
+  const handleEnterDiscount = e => {
+    if (e.key === 'Enter' && couponCode.trim().toLowerCase() === 'festivus') {
+      setActiveCoupon(true);
+      setCheckoutDiscount(subtotal / 2);
+      setCouponCode('');
+    }
+  };
+
   return (
     <Context.Provider
       value={{
@@ -132,6 +141,7 @@ export const StateContext = ({ children }) => {
         removeItem,
         setCheckingOut,
         setClientSecret,
+        handleEnterDiscount,
       }}
     >
       {children}

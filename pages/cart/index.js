@@ -17,13 +17,14 @@ const Cart = () => {
     checkingOut,
     clientSecret,
     setClientSecret,
+    handleEnterDiscount,
   } = useStateContext();
 
   const inputRef = useRef(null);
   const dynamicShipping = cartItems.length ? shippingRate : 0;
-  const cartStyles = cartItems.length
-    ? 'flex flex-col lg:flex-row gap-10'
-    : 'flex flex-col gap-10';
+  // const cartStyles = cartItems.length
+  //   ? 'flex flex-col lg:flex-row gap-10'
+  //   : 'flex flex-col gap-10';
 
   const stripePromise = getStripe();
 
@@ -49,7 +50,7 @@ const Cart = () => {
       <h1 className='text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-red-600 text-center mb-10'>
         Your Shopping Cart
       </h1>
-      <div className={cartStyles}>
+      <div className='flex flex-col lg:flex-row gap-10'>
         {cartItems.length ? (
           <div className='lg:h-96 overflow-y-scroll p-4 bg-white'>
             {cartItems.map(item => (
@@ -57,7 +58,7 @@ const Cart = () => {
             ))}
           </div>
         ) : (
-          <div className='text-center text-2xl'>No items in cart</div>
+          <h2 className=''>No items in cart</h2>
         )}
 
         <div className='border-2 rounded-xl p-4 flex-flex-col'>
@@ -75,6 +76,7 @@ const Cart = () => {
                 placeholder='Try discount code "festivus"'
                 className='rounded-full pl-4 pr-2 py-2 border-2 w-full outline-none'
                 onChange={e => setCouponCode(e.target.value)}
+                onKeyDown={e => handleEnterDiscount(e)}
               />
               <button
                 type='button'
